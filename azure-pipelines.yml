@@ -8,7 +8,8 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '9.0.100-rc.2'
+    version: '9.0.100-rc.2' # Specify the .NET 9 RC2 version here
+    includePreviewVersions: true # Allow installation of preview and RC versions
 
 - script: |
     dotnet workload install ios
