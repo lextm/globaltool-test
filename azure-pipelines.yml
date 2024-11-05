@@ -1,0 +1,20 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'macOS-latest'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '9.0.100-rc.2'
+
+- script: |
+    dotnet workload install ios
+    dotnet workload install android
+  displayName: 'Install .NET Workloads'
+
+- script: |
+    dotnet tool install --global Obfuscar.GlobalTool
+  displayName: 'Install Obfuscar'
